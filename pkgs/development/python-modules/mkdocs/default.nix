@@ -1,6 +1,5 @@
 { lib
 , buildPythonPackage
-, isPy3k
 , fetchFromGitHub
 , click
 , jinja2
@@ -9,12 +8,12 @@
 , markdown
 , pyyaml
 , tornado
+, isPy3k
 }:
 
 buildPythonPackage rec {
   pname = "mkdocs";
   version = "1.1.2";
-  disabled = !isPy3k;
 
   src = fetchFromGitHub {
     owner = "mkdocs";
@@ -51,5 +50,6 @@ buildPythonPackage rec {
     homepage = "https://www.mkdocs.org";
     license = licenses.bsd2;
     maintainers = with maintainers; [ kira-bruneau rkoe ];
+    broken = !isPy3k;
   };
 }
