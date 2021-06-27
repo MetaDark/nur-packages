@@ -17,6 +17,7 @@
         nurPkgs = import ./pkgs (pkgs // nurPkgs) pkgs;
       in
       rec {
+        checks = packages;
         packages = flake-utils.lib.filterPackages system (flake-utils.lib.flattenTree nurPkgs);
       }
     ) // rec {

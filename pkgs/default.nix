@@ -63,8 +63,8 @@ in
   poke = callPackage ./applications/editors/poke { };
 
   pokemmo-installer = callPackage ./games/pokemmo-installer {
-    inherit (gnome) zenity;
     jre = jdk11;
+    inherit (gnome) zenity;
   };
 
   protontricks = python3Packages.callPackage ./tools/package-management/protontricks {

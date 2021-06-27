@@ -1,4 +1,5 @@
 { lib
+, stdenv
 , buildPythonPackage
 , fetchFromGitHub
 , setuptools-scm
@@ -42,6 +43,6 @@ buildPythonPackage rec {
     homepage = "https://github.com/openlawlibrary/pygls";
     license = licenses.asl20;
     maintainers = with maintainers; [ kira-bruneau ];
-    broken = !isPy3k;
+    broken = !isPy3k || stdenv.isDarwin; # hangs at tests/test_protocol.py on darwin
   };
 }

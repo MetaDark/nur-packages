@@ -1,4 +1,5 @@
 { lib
+, stdenv
 , buildPythonPackage
 , fetchFromGitHub
 , click
@@ -50,6 +51,7 @@ buildPythonPackage rec {
     homepage = "https://www.mkdocs.org";
     license = licenses.bsd2;
     maintainers = with maintainers; [ kira-bruneau rkoe ];
-    broken = !isPy3k;
+    # darwin: AttributeError: partially initialized module 'mkdocs.plugins' has no attribute 'get_plugins' (most likely due to a circular import)
+    broken = !isPy3k || stdenv.isDarwin;
   };
 }
